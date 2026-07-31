@@ -27,93 +27,179 @@
   --bg-danger: #fef2f2;
   --fill-danger: #ef4444;
   --fill-accent: #6366f1;
-  --radius: 8px;
+  --radius: 10px;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: var(--font-sans);
-  background: #fafafa;
+  background: #f6f6f8;
   color: var(--text-primary);
   min-height: 100vh;
-  padding: 1rem;
+  padding: 0.75rem;
 }
-.container {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 1rem 0;
-}
-h1 {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.25rem;
-}
-.subtitle {
-  font-size: 13px;
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-}
-.zone-tabs { display: flex; gap: 6px; margin-bottom: 1.25rem; flex-wrap: wrap; }
-.ztab { padding: 6px 16px; border: 1px solid var(--border-strong); border-radius: 20px; background: var(--surface-1); color: var(--text-secondary); font-size: 13px; cursor: pointer; transition: all 0.15s; }
-.ztab:hover { background: var(--surface-2); color: var(--text-primary); }
-.ztab.active-free { background: var(--bg-success); border-color: var(--border-success); color: var(--text-success); font-weight: 500; }
-.ztab.active-paid { background: var(--bg-accent); border-color: var(--border-accent); color: var(--text-accent); font-weight: 500; }
-.type-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.25rem; }
-.ttab { padding: 5px 12px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface-1); color: var(--text-secondary); font-size: 12px; cursor: pointer; transition: all 0.15s; }
-.ttab:hover { background: var(--surface-2); }
-.ttab.active { background: var(--bg-danger); border-color: var(--border-danger); color: var(--text-danger); font-weight: 500; }
+.container { max-width: 640px; margin: 0 auto; padding: 0.75rem 0; }
+h1 { font-size: 19px; font-weight: 700; color: var(--text-primary); margin-bottom: 0.2rem; }
+.subtitle { font-size: 12px; color: var(--text-secondary); margin-bottom: 1.25rem; }
+
+/* ゾーンタブ */
+.zone-tabs { display: flex; gap: 6px; margin-bottom: 1rem; flex-wrap: wrap; }
+.ztab { padding: 8px 18px; border: 1.5px solid var(--border-strong); border-radius: 24px; background: var(--surface-2); color: var(--text-secondary); font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.18s; min-height: 40px; }
+.ztab:hover { background: var(--surface-1); }
+.ztab.active-free { background: var(--bg-success); border-color: var(--border-success); color: var(--text-success); }
+.ztab.active-paid { background: var(--bg-accent); border-color: var(--border-accent); color: var(--text-accent); }
+
+/* 類タブ */
+.type-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1rem; }
+.ttab { padding: 7px 13px; border: 1.5px solid var(--border); border-radius: 18px; background: var(--surface-2); color: var(--text-secondary); font-size: 13px; cursor: pointer; transition: all 0.18s; min-height: 36px; }
+.ttab:hover { background: var(--surface-1); }
+.ttab.active { background: var(--bg-danger); border-color: var(--border-danger); color: var(--text-danger); font-weight: 600; }
 .ttab.unlocked { border-color: var(--border-accent); }
-.ttab.unlocked.active { background: var(--bg-accent); border-color: var(--border-accent); color: var(--text-accent); }
-.prog-bar { height: 4px; background: var(--surface-1); border-radius: 2px; margin-bottom: 1.25rem; overflow: hidden; }
-.prog-fill { height: 100%; background: var(--fill-danger); border-radius: 2px; transition: width 0.3s; }
+.ttab.unlocked.active { background: var(--bg-accent); border-color: var(--border-accent); color: var(--text-accent); font-weight: 600; }
+
+/* カテゴリフィルター */
+.cat-filter { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 0.85rem; }
+.cf-btn { padding: 5px 11px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface-1); color: var(--text-secondary); font-size: 12px; cursor: pointer; transition: all 0.15s; min-height: 30px; }
+.cf-btn:hover { background: var(--surface-2); }
+.cf-btn.active { background: #fdf4ff; border-color: #c026d3; color: #a21caf; font-weight: 600; }
+
+/* プログレスバー */
+.prog-bar { height: 5px; background: var(--surface-1); border-radius: 3px; margin-bottom: 1rem; overflow: hidden; }
+.prog-fill { height: 100%; background: var(--fill-danger); border-radius: 3px; transition: width 0.35s ease; }
 .prog-fill.paid { background: var(--fill-accent); }
-.meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+
+/* メタ行 */
+.meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem; gap: 6px; flex-wrap: wrap; }
 .meta-l { font-size: 12px; color: var(--text-muted); }
-.score-badge { font-size: 13px; font-weight: 500; padding: 3px 10px; border-radius: 12px; }
+.score-badge { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
 .score-free { background: var(--bg-danger); color: var(--text-danger); }
 .score-paid { background: var(--bg-accent); color: var(--text-accent); }
-.q-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
-.cat-tag { font-size: 11px; color: var(--text-secondary); background: var(--surface-1); border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; display: inline-block; margin-bottom: 0.5rem; }
-.type-tag { font-size: 11px; color: var(--text-accent); background: var(--bg-accent); border: 1px solid var(--border-accent); border-radius: 4px; padding: 2px 8px; display: inline-block; margin-bottom: 0.5rem; margin-left: 4px; }
-.q-text { font-size: 15px; color: var(--text-primary); line-height: 1.6; margin: 0; }
-.choices { display: flex; flex-direction: column; gap: 8px; margin-top: 1rem; }
-.c-btn { text-align: left; padding: 10px 14px; border: 1px solid var(--border-strong); border-radius: var(--radius); background: var(--surface-2); color: var(--text-primary); font-size: 14px; cursor: pointer; transition: all 0.15s; line-height: 1.5; font-family: var(--font-sans); }
-.c-btn:hover:not(:disabled) { background: var(--surface-1); border-color: var(--border-stronger); }
-.c-btn.correct { background: var(--bg-success); border-color: var(--border-success); color: var(--text-success); }
-.c-btn.wrong { background: var(--bg-danger); border-color: var(--border-danger); color: var(--text-danger); }
-.c-btn:disabled { cursor: default; }
-.exp-box { margin-top: 1rem; padding: 12px 14px; background: var(--surface-1); border-left: 3px solid var(--border-accent); border-radius: 0 var(--radius) var(--radius) 0; font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
-.note-cta { margin-top: 0.75rem; padding: 10px 14px; background: var(--bg-accent); border: 1px solid var(--border-accent); border-radius: var(--radius); font-size: 13px; color: var(--text-accent); display: flex; align-items: center; gap: 8px; }
-.note-link { color: var(--text-accent); font-weight: 500; text-decoration: underline; cursor: pointer; }
-.nav-row { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; }
-.nav-btn { padding: 8px 20px; border: 1px solid var(--border-strong); border-radius: var(--radius); background: var(--surface-1); color: var(--text-primary); font-size: 14px; cursor: pointer; font-family: var(--font-sans); }
-.nav-btn:hover { background: var(--surface-2); }
+.meta-right { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+
+/* 問題カード */
+.q-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem; margin-bottom: 0.85rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: box-shadow 0.2s; }
+.q-card.correct-anim { animation: flashCorrect 0.45s ease; }
+.q-card.wrong-anim { animation: flashWrong 0.45s ease; }
+@keyframes flashCorrect { 0%{background:#dcfce7} 100%{background:white} }
+@keyframes flashWrong   { 0%{background:#fee2e2} 100%{background:white} }
+.tag-row { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 0.6rem; align-items: center; }
+.cat-tag { font-size: 11px; color: var(--text-secondary); background: var(--surface-1); border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; }
+.type-tag { font-size: 11px; color: var(--text-accent); background: var(--bg-accent); border: 1px solid var(--border-accent); border-radius: 4px; padding: 2px 8px; }
+.weak-tag { font-size: 11px; color: #b45309; background: #fffbeb; border: 1px solid #fbbf24; border-radius: 4px; padding: 2px 8px; }
+.q-text { font-size: 15px; color: var(--text-primary); line-height: 1.65; margin: 0; }
+
+/* 選択肢 */
+.choices { display: flex; flex-direction: column; gap: 9px; margin-top: 1rem; }
+.c-btn {
+  text-align: left; padding: 12px 15px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  color: var(--text-primary);
+  font-size: 14px; cursor: pointer;
+  transition: all 0.15s; line-height: 1.5;
+  font-family: var(--font-sans);
+  min-height: 48px;
+  position: relative;
+}
+.c-btn:hover:not(:disabled) { background: var(--surface-1); border-color: var(--border-stronger); transform: translateY(-1px); box-shadow: 0 2px 6px rgba(0,0,0,0.07); }
+.c-btn.correct { background: var(--bg-success); border-color: var(--border-success); color: var(--text-success); font-weight: 600; }
+.c-btn.wrong   { background: var(--bg-danger);  border-color: var(--border-danger);  color: var(--text-danger); }
+.c-btn:disabled { cursor: default; transform: none; box-shadow: none; }
+.c-btn .c-mark { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 16px; }
+
+/* 解説 */
+.exp-box { margin-top: 1rem; padding: 13px 15px; background: #f8f8ff; border-left: 3px solid var(--border-accent); border-radius: 0 var(--radius) var(--radius) 0; font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+
+/* note誘導 */
+.note-cta { margin-top: 0.85rem; padding: 12px 14px; background: linear-gradient(135deg,#eef2ff,#f5f3ff); border: 1px solid var(--border-accent); border-radius: var(--radius); font-size: 13px; color: var(--text-accent); display: flex; align-items: center; gap: 8px; }
+.note-link { color: var(--text-accent); font-weight: 600; text-decoration: underline; }
+
+/* ナビ */
+.nav-row { display: flex; justify-content: space-between; align-items: center; margin-top: 0.85rem; gap: 8px; }
+.nav-btn { padding: 11px 22px; border: 1.5px solid var(--border-strong); border-radius: var(--radius); background: var(--surface-1); color: var(--text-primary); font-size: 14px; cursor: pointer; font-family: var(--font-sans); font-weight: 500; transition: all 0.15s; min-height: 44px; }
+.nav-btn:hover:not(:disabled) { background: var(--surface-2); }
+.nav-btn:disabled { opacity: 0.4; cursor: default; }
 .nav-btn.primary-free { background: var(--fill-danger); border-color: var(--fill-danger); color: white; }
+.nav-btn.primary-free:hover { background: #dc2626; }
 .nav-btn.primary-paid { background: var(--fill-accent); border-color: var(--fill-accent); color: white; }
-.pw-card { background: var(--surface-2); border: 1px solid var(--border-accent); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
-.pw-title { font-size: 16px; font-weight: 500; color: var(--text-primary); margin: 0 0 0.5rem; }
-.pw-sub { font-size: 13px; color: var(--text-secondary); margin: 0 0 1.25rem; line-height: 1.6; }
+.nav-btn.primary-paid:hover { background: #4338ca; }
+
+/* パスワードカード */
+.pw-card { background: var(--surface-2); border: 1px solid var(--border-accent); border-radius: 16px; padding: 1.75rem 1.25rem; margin-bottom: 1rem; text-align: center; box-shadow: 0 2px 12px rgba(99,102,241,0.1); }
+.pw-icon { font-size: 36px; margin-bottom: 0.5rem; }
+.pw-title { font-size: 17px; font-weight: 700; color: var(--text-primary); margin: 0 0 0.5rem; }
+.pw-sub { font-size: 13px; color: var(--text-secondary); margin: 0 0 1.25rem; line-height: 1.65; }
+.pw-note-btn { display: inline-block; margin-bottom: 1.25rem; padding: 10px 22px; background: #41c9b4; color: white; border-radius: 20px; font-size: 14px; font-weight: 600; text-decoration: none; transition: opacity 0.15s; }
+.pw-note-btn:hover { opacity: 0.85; }
 .pw-input-row { display: flex; gap: 8px; max-width: 360px; margin: 0 auto; }
-.pw-input-row input { flex: 1; font-size: 14px; padding: 8px 12px; border: 1px solid var(--border-strong); border-radius: var(--radius); font-family: var(--font-sans); }
-.pw-input-row button { padding: 8px 16px; background: var(--fill-accent); color: white; border: none; border-radius: var(--radius); font-size: 14px; cursor: pointer; font-family: var(--font-sans); }
+.pw-input-row input { flex: 1; font-size: 15px; padding: 10px 13px; border: 1.5px solid var(--border-strong); border-radius: var(--radius); font-family: var(--font-sans); min-height: 44px; }
+.pw-input-row button { padding: 10px 18px; background: var(--fill-accent); color: white; border: none; border-radius: var(--radius); font-size: 14px; font-weight: 600; cursor: pointer; font-family: var(--font-sans); min-height: 44px; }
 .pw-err { font-size: 12px; color: var(--text-danger); margin-top: 0.5rem; }
-.unlocked-banner { background: var(--bg-success); border: 1px solid var(--border-success); border-radius: var(--radius); padding: 8px 14px; font-size: 13px; color: var(--text-success); display: flex; align-items: center; gap: 6px; margin-bottom: 1rem; }
-.result-wrap { text-align: center; padding: 1.5rem 1rem; }
-.result-num { font-size: 48px; font-weight: 500; line-height: 1; }
+.pw-hint { margin-top: 1rem; font-size: 11px; color: var(--text-muted); }
+
+/* 解放済みバナー */
+.unlocked-banner { background: var(--bg-success); border: 1px solid var(--border-success); border-radius: var(--radius); padding: 9px 14px; font-size: 13px; color: var(--text-success); font-weight: 500; display: flex; align-items: center; gap: 6px; margin-bottom: 1rem; }
+
+/* 苦手リスト */
+.weak-bar { background: #fffbeb; border: 1px solid #fbbf24; border-radius: var(--radius); padding: 10px 14px; margin-bottom: 0.85rem; }
+.weak-bar-title { font-size: 12px; font-weight: 600; color: #92400e; margin-bottom: 6px; }
+.weak-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.weak-chip { font-size: 11px; background: #fef3c7; border: 1px solid #fbbf24; border-radius: 10px; padding: 2px 9px; color: #78350f; cursor: pointer; transition: background 0.15s; }
+.weak-chip:hover { background: #fde68a; }
+.weak-chip.retry { background: #f59e0b; color: white; border-color: #f59e0b; }
+
+/* 正答率グラフ */
+.stats-panel { background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; padding: 1.1rem 1.1rem 0.8rem; margin-bottom: 1rem; box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
+.stats-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.75rem; }
+.stats-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+.stats-label { font-size: 12px; color: var(--text-secondary); width: 80px; flex-shrink: 0; }
+.stats-track { flex: 1; height: 8px; background: var(--surface-1); border-radius: 4px; overflow: hidden; }
+.stats-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
+.stats-val { font-size: 11px; color: var(--text-muted); width: 36px; text-align: right; flex-shrink: 0; }
+
+/* 結果画面 */
+.result-wrap { text-align: center; padding: 1.25rem 0.5rem; }
+.result-circle { width: 110px; height: 110px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 0.85rem; }
+.result-circle.free { background: var(--bg-danger); border: 3px solid var(--border-danger); }
+.result-circle.paid { background: var(--bg-accent); border: 3px solid var(--border-accent); }
+.result-num { font-size: 36px; font-weight: 700; line-height: 1; }
 .result-num.free { color: var(--text-danger); }
 .result-num.paid { color: var(--text-accent); }
-.result-lbl { font-size: 14px; color: var(--text-secondary); margin: 0.5rem 0 1rem; }
-.result-msg { font-size: 15px; color: var(--text-primary); margin-bottom: 1.25rem; }
-.result-cta { border-radius: 12px; padding: 1rem 1.25rem; text-align: left; margin-bottom: 1rem; }
+.result-pct { font-size: 13px; font-weight: 500; }
+.result-pct.free { color: var(--text-danger); }
+.result-pct.paid { color: var(--text-accent); }
+.result-lbl { font-size: 13px; color: var(--text-secondary); margin-bottom: 0.5rem; }
+.result-msg { font-size: 14px; color: var(--text-primary); margin-bottom: 1.25rem; line-height: 1.6; }
+.result-cta { border-radius: 12px; padding: 1rem 1.1rem; text-align: left; margin-bottom: 0.75rem; }
 .result-cta.free { background: var(--bg-danger); border: 1px solid var(--border-danger); }
 .result-cta.paid { background: var(--bg-accent); border: 1px solid var(--border-accent); }
-.result-cta-title { font-size: 13px; font-weight: 500; margin-bottom: 0.5rem; }
+.result-cta-title { font-size: 13px; font-weight: 600; margin-bottom: 0.5rem; }
 .result-cta-title.free { color: var(--text-danger); }
 .result-cta-title.paid { color: var(--text-accent); }
 .result-link { font-size: 13px; color: var(--text-accent); text-decoration: underline; cursor: pointer; display: block; margin: 4px 0; }
-.rand-btn { background: var(--bg-hover); border: 1px solid var(--border); border-radius: 20px; padding: 3px 12px; font-size: 12px; color: var(--text-secondary); cursor: pointer; transition: all .18s; white-space: nowrap; }
-.rand-btn:hover { background: var(--border); }
-.rand-btn.rand-on { background: #7c3aed22; border-color: #7c3aed66; color: #7c3aed; font-weight: 600; }
+.result-btns { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+.result-weak-btn { padding: 10px 18px; background: #fffbeb; border: 1.5px solid #fbbf24; border-radius: var(--radius); color: #92400e; font-size: 13px; font-weight: 600; cursor: pointer; font-family: var(--font-sans); min-height: 44px; transition: background 0.15s; }
+.result-weak-btn:hover { background: #fef3c7; }
+
+/* ランダムボタン */
+.rand-btn { background: var(--surface-1); border: 1px solid var(--border); border-radius: 16px; padding: 5px 12px; font-size: 12px; color: var(--text-secondary); cursor: pointer; transition: all .18s; white-space: nowrap; min-height: 30px; }
+.rand-btn:hover { background: var(--surface-2); }
+.rand-btn.rand-on { background: #f5f3ff; border-color: #7c3aed; color: #7c3aed; font-weight: 600; }
+
+/* レスポンシブ */
+@media (max-width: 480px) {
+  body { padding: 0.5rem; }
+  .container { padding: 0.5rem 0; }
+  h1 { font-size: 17px; }
+  .ztab { padding: 7px 14px; font-size: 13px; }
+  .ttab { padding: 6px 10px; font-size: 12px; }
+  .q-text { font-size: 14px; }
+  .c-btn { font-size: 13px; padding: 11px 13px; }
+  .nav-btn { padding: 10px 16px; font-size: 13px; }
+  .result-circle { width: 95px; height: 95px; }
+  .result-num { font-size: 30px; }
+  .stats-label { width: 68px; font-size: 11px; }
+}
 </style>
 </head>
 <body>
@@ -545,6 +631,7 @@ const PAID_Q = {
 const FREE_TYPES = Object.keys(FREE_Q);
 const PAID_TYPES = Object.keys(PAID_Q);
 
+// --- 状態変数 ---
 let zone = "free";
 let currentType = "基礎知識";
 let currentIdx = 0;
@@ -552,205 +639,298 @@ let answered = [];
 let score = 0;
 let unlockedTypes = new Set();
 let pwError = "";
-
-// ランダムモード用
 let randomMode = false;
 let randomOrder = [];
+let catFilter = "全て";
+let weakList = {};
+let sessionStats = {};
+let retryWeakMode = false;
 
-function getRawQs(){
-  return zone === "free" ? (FREE_Q[currentType]||[]) : (PAID_Q[currentType]||[]);
-}
-
-function getQs(){
-  const raw = getRawQs();
-  if(!randomMode || randomOrder.length !== raw.length) return raw;
-  return randomOrder.map(i => raw[i]);
-}
-
+// --- ユーティリティ ---
 function shuffleArray(arr){
-  const a = [...arr];
-  for(let i=a.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [a[i],a[j]]=[a[j],a[i]];
-  }
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
   return a;
 }
 
-function toggleRandom(){
-  randomMode = !randomMode;
-  const raw = getRawQs();
-  if(randomMode){
-    randomOrder = shuffleArray([...Array(raw.length).keys()]);
-  } else {
-    randomOrder = [...Array(raw.length).keys()];
+function getRawQs(){
+  const base = zone==="free" ? (FREE_Q[currentType]||[]) : (PAID_Q[currentType]||[]);
+  if(retryWeakMode){
+    const wIdx = weakList[currentType]||[];
+    return wIdx.map(i=>base[i]).filter(Boolean);
   }
-  currentIdx = 0; answered = []; score = 0;
-  render();
+  if(catFilter==="全て") return base;
+  return base.filter(q=>q.cat===catFilter);
 }
 
+function getQs(){
+  const raw=getRawQs();
+  if(!randomMode||randomOrder.length!==raw.length) return raw;
+  return randomOrder.map(i=>raw[i]);
+}
+
+function getCats(){
+  const base = zone==="free" ? (FREE_Q[currentType]||[]) : (PAID_Q[currentType]||[]);
+  return [...new Set(base.map(q=>q.cat))];
+}
+
+function resetQuizState(){
+  currentIdx=0; answered=[]; score=0; randomMode=false; randomOrder=[];
+}
+
+// --- ゾーン・タブ切替 ---
 function switchZone(z){
-  zone = z;
-  currentType = z === "free" ? "基礎知識" : PAID_TYPES[0];
-  currentIdx = 0; answered = []; score = 0; pwError = "";
-  randomMode = false; randomOrder = [];
-  render();
+  zone=z; currentType=z==="free"?"基礎知識":PAID_TYPES[0];
+  catFilter="全て"; retryWeakMode=false;
+  resetQuizState(); pwError=""; render();
 }
 
 function switchType(t){
-  currentType = t; currentIdx = 0; answered = []; score = 0;
-  randomMode = false; randomOrder = [];
-  render();
+  currentType=t; catFilter="全て"; retryWeakMode=false;
+  resetQuizState(); render();
 }
 
+function switchPaidType(t){
+  currentType=t; catFilter="全て"; retryWeakMode=false;
+  resetQuizState(); pwError=""; renderPaid();
+}
+
+function switchCatFilter(cat){
+  catFilter=cat; retryWeakMode=false;
+  resetQuizState(); render();
+}
+
+function toggleRandom(){
+  randomMode=!randomMode;
+  const raw=getRawQs();
+  randomOrder=randomMode?shuffleArray([...Array(raw.length).keys()]):[...Array(raw.length).keys()];
+  currentIdx=0; answered=[]; score=0; render();
+}
+
+// --- 苦手リスト ---
+function addWeak(type, rawIdx){
+  if(!weakList[type]) weakList[type]=[];
+  if(!weakList[type].includes(rawIdx)) weakList[type].push(rawIdx);
+}
+function removeWeak(type, rawIdx){
+  if(weakList[type]) weakList[type]=weakList[type].filter(i=>i!==rawIdx);
+}
+function startWeakRetry(){
+  const wIdx=weakList[currentType]||[];
+  if(wIdx.length===0){alert("苦手問題がまだありません。問題に回答すると自動で登録されます。");return;}
+  retryWeakMode=true; catFilter="全て"; resetQuizState(); render();
+}
+function stopWeakRetry(){
+  retryWeakMode=false; resetQuizState(); render();
+}
+
+// --- UIビルダー ---
+function buildCatFilter(){
+  const cats=getCats();
+  if(cats.length<=1) return "";
+  const all=["全て",...cats];
+  return `<div class="cat-filter">${all.map(c=>`<button class="cf-btn${c===catFilter?" active":""}" onclick="switchCatFilter('${c}')">${c}</button>`).join("")}</div>`;
+}
+
+function buildWeakBar(){
+  const wIdx=weakList[currentType]||[];
+  if(wIdx.length===0) return "";
+  return `<div class="weak-bar">
+    <div class="weak-bar-title">⚠️ 苦手問題 ${wIdx.length}件</div>
+    <div class="weak-chips">
+      ${wIdx.slice(0,8).map(i=>`<span class="weak-chip">Q${i+1}</span>`).join("")}
+      ${wIdx.length>8?`<span class="weak-chip">+${wIdx.length-8}</span>`:""}
+      <span class="weak-chip retry" onclick="startWeakRetry()">🔁 苦手を解く</span>
+    </div>
+  </div>`;
+}
+
+function buildStatsPanel(){
+  const types=zone==="free"?FREE_TYPES:PAID_TYPES;
+  const entries=types.filter(t=>sessionStats[t]);
+  if(entries.length===0) return "";
+  return `<div class="stats-panel">
+    <div class="stats-title">📊 正答率（今回のセッション）</div>
+    ${entries.map(t=>{
+      const s=sessionStats[t];
+      const pct=s.total?Math.round(s.score/s.total*100):0;
+      const color=pct>=80?"#22c55e":pct>=60?"#f59e0b":"#ef4444";
+      return `<div class="stats-row">
+        <span class="stats-label">${t}</span>
+        <div class="stats-track"><div class="stats-fill" style="width:${pct}%;background:${color}"></div></div>
+        <span class="stats-val">${pct}%</span>
+      </div>`;
+    }).join("")}
+  </div>`;
+}
+
+function buildMeta(z, total){
+  const badge=`<span class="score-badge score-${z}">正解 ${score}問</span>`;
+  const rand=`<button class="rand-btn${randomMode?" rand-on":""}" onclick="toggleRandom()">${randomMode?"🔀ON":"🔀"}</button>`;
+  const retry=retryWeakMode?`<button class="rand-btn" onclick="stopWeakRetry()">📋 全問に戻る</button>`:"";
+  return `<div class="meta"><span class="meta-l">${retryWeakMode?"⚠️苦手 ":""}問題 ${currentIdx+1} / ${total}</span><div class="meta-right">${badge}${rand}${retry}</div></div>`;
+}
+
+// --- メインレンダー ---
 function render(){
   document.getElementById("zoneTabs").querySelectorAll(".ztab").forEach((b,i)=>{
-    b.className = "ztab";
-    if(i===0 && zone==="free") b.classList.add("active-free");
-    if(i===1 && zone==="paid") b.classList.add("active-paid");
+    b.className="ztab";
+    if(i===0&&zone==="free") b.classList.add("active-free");
+    if(i===1&&zone==="paid") b.classList.add("active-paid");
   });
-  zone === "free" ? renderFree() : renderPaid();
+  zone==="free"?renderFree():renderPaid();
 }
 
 function renderFree(){
-  const tabsHtml = FREE_TYPES.map(t =>
-    `<button class="ttab${t===currentType?' active':''}" onclick="switchType('${t}')">${t}</button>`
-  ).join("");
-  const qs = getQs();
-  const total = qs.length;
-  const allDone = answered.length===total && answered.every(a=>a!==null);
-  const content = (allDone && currentIdx===total-1 && answered[currentIdx]!==null)
-    ? renderResult("free", qs) : renderQuestion("free", qs);
-  const randBtnFree = `<button class="rand-btn${randomMode?' rand-on':''}" onclick="toggleRandom()" title="ランダム出題">${randomMode?'🔀 ランダムON':'🔀 ランダム'}</button>`;
-  document.getElementById("mainArea").innerHTML = `
+  const tabsHtml=FREE_TYPES.map(t=>`<button class="ttab${t===currentType?" active":""}" onclick="switchType('${t}')">${t}</button>`).join("");
+  const qs=getQs(); const total=qs.length;
+  const allDone=total>0&&answered.length===total&&answered.every(a=>a!==null);
+  const content=(allDone&&currentIdx===total-1&&answered[currentIdx]!==null)?renderResult("free",qs):renderQuestion("free",qs);
+  const prog=`<div class="prog-bar"><div class="prog-fill" style="width:${total?Math.round(((currentIdx+1)/total)*100):0}%"></div></div>`;
+  document.getElementById("mainArea").innerHTML=`
     <div class="type-tabs">${tabsHtml}</div>
-    <div class="prog-bar"><div class="prog-fill" style="width:${total?Math.round(((currentIdx+1)/total)*100):0}%"></div></div>
-    <div class="meta"><span class="meta-l">問題 ${currentIdx+1} / ${total}</span><span class="score-badge score-free">正解 ${score}問</span>${randBtnFree}</div>
-    ${content}
+    ${buildStatsPanel()}${buildCatFilter()}${buildWeakBar()}${prog}
+    ${buildMeta("free",total)}${content}
   `;
 }
 
 function renderPaid(){
-  const tabsHtml = PAID_TYPES.map(t => {
-    const ul = unlockedTypes.has(t)||unlockedTypes.has("ALL");
-    return `<button class="ttab${ul?' unlocked':''}${t===currentType?' active':''}" onclick="switchPaidType('${t}')">${t} ${ul?'🔓':'🔒'}</button>`;
+  const tabsHtml=PAID_TYPES.map(t=>{
+    const ul=unlockedTypes.has(t)||unlockedTypes.has("ALL");
+    return `<button class="ttab${ul?" unlocked":""}${t===currentType?" active":""}" onclick="switchPaidType('${t}')">${t} ${ul?"🔓":"🔒"}</button>`;
   }).join("");
-  const isUnlocked = unlockedTypes.has(currentType)||unlockedTypes.has("ALL");
-  let content = "";
+  const isUnlocked=unlockedTypes.has(currentType)||unlockedTypes.has("ALL");
+  let content="";
   if(!isUnlocked){
-    content = renderPwForm();
+    content=renderPwForm();
   } else {
-    const qs = getQs();
-    const total = qs.length;
-    const allDone = answered.length===total && answered.every(a=>a!==null);
-    const randBtnPaid = `<button class="rand-btn${randomMode?' rand-on':''}" onclick="toggleRandom()" title="ランダム出題">${randomMode?'🔀 ランダムON':'🔀 ランダム'}</button>`;
-    const metaRow = `<div class="meta"><span class="meta-l">問題 ${currentIdx+1} / ${total}</span><span class="score-badge score-paid">正解 ${score}問</span>${randBtnPaid}</div>`;
-    const qContentWithRand = (allDone && currentIdx===total-1 && answered[currentIdx]!==null)
-      ? renderResult("paid", qs)
-      : `<div class="prog-bar"><div class="prog-fill paid" style="width:${total?Math.round(((currentIdx+1)/total)*100):0}%"></div></div>
-         ${metaRow}
-         ${renderQuestion("paid", qs)}`;
-    content = `<div class="unlocked-banner">🔓 ${currentType} 有料版 — 解放済み</div>${qContentWithRand}`;
+    const qs=getQs(); const total=qs.length;
+    const allDone=total>0&&answered.length===total&&answered.every(a=>a!==null);
+    const prog=`<div class="prog-bar"><div class="prog-fill paid" style="width:${total?Math.round(((currentIdx+1)/total)*100):0}%"></div></div>`;
+    const inner=(allDone&&currentIdx===total-1&&answered[currentIdx]!==null)?renderResult("paid",qs):`${prog}${buildMeta("paid",total)}${renderQuestion("paid",qs)}`;
+    content=`<div class="unlocked-banner">🔓 ${currentType} 有料版 — 解放済み</div>${buildStatsPanel()}${buildCatFilter()}${buildWeakBar()}${inner}`;
   }
-  document.getElementById("mainArea").innerHTML = `<div class="type-tabs">${tabsHtml}</div>${content}`;
+  document.getElementById("mainArea").innerHTML=`<div class="type-tabs">${tabsHtml}</div>${content}`;
 }
 
-function switchPaidType(t){ currentType=t; currentIdx=0; answered=[]; score=0; pwError=""; randomMode=false; randomOrder=[]; renderPaid(); }
-
 function renderPwForm(){
-  return `
-    <div class="pw-card">
-      <p class="pw-title">🔒 ${currentType} 有料版</p>
-      <p class="pw-sub">noteの${currentType}類攻略記事（またはセット記事）を<br>購入するとパスワードが記載されています。</p>
-      <div class="pw-input-row">
-        <input type="password" id="pwInput" placeholder="パスワードを入力" onkeydown="if(event.key==='Enter')submitPw()">
-        <button onclick="submitPw()">解放する</button>
-      </div>
-      ${pwError?`<p class="pw-err">❌ ${pwError}</p>`:""}
-      <p style="margin-top:1.25rem;font-size:12px;color:#a1a1aa">セット購入パスワードで全類を一括解放できます</p>
+  const noteUrl=NOTE_URLS[currentType]||"https://note.com";
+  return `<div class="pw-card">
+    <div class="pw-icon">🔒</div>
+    <p class="pw-title">${currentType} 有料版</p>
+    <p class="pw-sub">${currentType}類の問題50問＋解説が解放されます。<br>noteで攻略記事を確認してパスワードを入手しよう！</p>
+    <a class="pw-note-btn" href="${noteUrl}" target="_blank" rel="noopener">📖 noteで記事を見る</a>
+    <div class="pw-input-row">
+      <input type="password" id="pwInput" placeholder="パスワードを入力" onkeydown="if(event.key==='Enter')submitPw()">
+      <button onclick="submitPw()">解放</button>
     </div>
-  `;
+    ${pwError?`<p class="pw-err">❌ ${pwError}</p>`:""}
+    <p class="pw-hint">セット購入パスワードで全類を一括解放できます</p>
+  </div>`;
 }
 
 function submitPw(){
-  const val = document.getElementById("pwInput").value.trim();
+  const val=document.getElementById("pwInput").value.trim();
   if(val===PASSWORDS["SET"]){
-    PAID_TYPES.forEach(t=>unlockedTypes.add(t)); unlockedTypes.add("ALL");
-    pwError=""; answered=[]; score=0; currentIdx=0; renderPaid();
+    PAID_TYPES.forEach(t=>unlockedTypes.add(t));unlockedTypes.add("ALL");
+    pwError="";resetQuizState();renderPaid();
   } else if(PASSWORDS[currentType]&&val===PASSWORDS[currentType]){
     unlockedTypes.add(currentType);
-    pwError=""; answered=[]; score=0; currentIdx=0; renderPaid();
+    pwError="";resetQuizState();renderPaid();
   } else {
-    pwError="パスワードが違います。noteの記事をご確認ください。"; renderPaid();
+    pwError="パスワードが違います。noteの記事をご確認ください。";renderPaid();
   }
 }
 
 function renderQuestion(z, qs){
-  if(!qs||qs.length===0) return `<div class="q-card"><p class="q-text" style="color:#a1a1aa">問題データを準備中です。</p></div>`;
-  const q = qs[currentIdx];
-  const isAnswered = answered[currentIdx]!==undefined && answered[currentIdx]!==null;
-  const isLast = currentIdx===qs.length-1;
-  const btnClass = z==="free"?"primary-free":"primary-paid";
-  const typeTag = q.type?`<span class="type-tag">${q.type}</span>`:"";
-  const choicesHtml = q.choices.map((c,i)=>{
-    let cls="c-btn";
-    if(isAnswered){ if(i===q.ans) cls+=" correct"; else if(i===answered[currentIdx]) cls+=" wrong"; }
-    return `<button class="${cls}" onclick="answer(${i})" ${isAnswered?"disabled":""}>${i+1}. ${c}</button>`;
+  if(!qs||qs.length===0) return `<div class="q-card"><p class="q-text" style="color:#a1a1aa">この条件に一致する問題がありません。</p></div>`;
+  const q=qs[currentIdx];
+  const isAnswered=answered[currentIdx]!==undefined&&answered[currentIdx]!==null;
+  const isLast=currentIdx===qs.length-1;
+  const btnClass=z==="free"?"primary-free":"primary-paid";
+  const typeTag=q.type?`<span class="type-tag">${q.type}</span>`:"";
+  const base=zone==="free"?(FREE_Q[currentType]||[]):(PAID_Q[currentType]||[]);
+  const rawIdx=retryWeakMode?((weakList[currentType]||[])[currentIdx]):base.indexOf(q);
+  const isWeak=(weakList[currentType]||[]).includes(rawIdx);
+  const weakTagHtml=isWeak?`<span class="weak-tag">⚠️ 苦手</span>`:"";
+  const choicesHtml=q.choices.map((c,i)=>{
+    let cls="c-btn"; let mark="";
+    if(isAnswered){
+      if(i===q.ans){cls+=" correct";mark=`<span class="c-mark">✅</span>`;}
+      else if(i===answered[currentIdx]){cls+=" wrong";mark=`<span class="c-mark">❌</span>`;}
+    }
+    return `<button class="${cls}" onclick="answer(${i})" ${isAnswered?"disabled":""}>${i+1}. ${c}${mark}</button>`;
   }).join("");
-  const noteUrl = NOTE_URLS[currentType]||"https://note.com";
-  const expHtml = isAnswered?`
-    <div class="exp-box">${q.exp}</div>
-    ${z==="free"?`<div class="note-cta">📖 <span>${currentType}の詳しい攻略はnoteで → <a class="note-link" href="${noteUrl}" target="_blank" rel="noopener">攻略記事を読む</a></span></div>`:""}
+  const noteUrl=NOTE_URLS[currentType]||"https://note.com";
+  const expHtml=isAnswered?`
+    <div class="exp-box">💡 ${q.exp}</div>
+    ${z==="free"?`<div class="note-cta">📖 <span>${currentType}の詳しい攻略はnoteで →&nbsp;<a class="note-link" href="${noteUrl}" target="_blank" rel="noopener">攻略記事を読む</a></span></div>`:""}
   `:"";
-  const navHtml = isAnswered?`
+  const navHtml=isAnswered?`
     <div class="nav-row">
       <button class="nav-btn" onclick="prevQ()" ${currentIdx===0?"disabled":""}>← 前へ</button>
-      <button class="nav-btn ${btnClass}" onclick="${isLast?"showResult()":"nextQ()"}">${isLast?"結果を見る":"次の問題 →"}</button>
+      <button class="nav-btn ${btnClass}" onclick="${isLast?'showResult()':'nextQ()'}">${isLast?'結果を見る ▶':'次の問題 →'}</button>
     </div>
   `:"";
-  return `<div class="q-card"><span class="cat-tag">${q.cat}</span>${typeTag}<p class="q-text">${q.q}</p><div class="choices">${choicesHtml}</div>${expHtml}</div>${navHtml}`;
+  return `<div class="q-card" id="qCard">
+    <div class="tag-row"><span class="cat-tag">${q.cat}</span>${typeTag}${weakTagHtml}</div>
+    <p class="q-text">${q.q}</p>
+    <div class="choices">${choicesHtml}</div>${expHtml}
+  </div>${navHtml}`;
 }
 
 function answer(i){
   if(answered[currentIdx]!==undefined&&answered[currentIdx]!==null) return;
-  const qs=getQs();
+  const qs=getQs(); const q=qs[currentIdx];
   if(answered.length<=currentIdx) answered.length=currentIdx+1;
   answered[currentIdx]=i;
-  if(i===qs[currentIdx].ans) score++;
+  const correct=(i===q.ans);
+  if(correct) score++;
+  const base=zone==="free"?(FREE_Q[currentType]||[]):(PAID_Q[currentType]||[]);
+  const rawIdx=retryWeakMode?((weakList[currentType]||[])[currentIdx]):base.indexOf(q);
+  if(!correct){addWeak(currentType,rawIdx);}else{removeWeak(currentType,rawIdx);}
   render();
+  setTimeout(()=>{const card=document.getElementById("qCard");if(card)card.classList.add(correct?"correct-anim":"wrong-anim");},10);
 }
 
 function nextQ(){ currentIdx++; render(); }
-function prevQ(){ if(currentIdx>0){ currentIdx--; render(); } }
-function showResult(){ render(); }
+function prevQ(){ if(currentIdx>0){currentIdx--;render();} }
+function showResult(){
+  const qs=getQs();
+  sessionStats[currentType]={score,total:qs.length};
+  render();
+}
 
 function renderResult(z, qs){
   const total=qs.length;
   const pct=Math.round((score/total)*100);
-  const msg=pct>=80?"すばらしい！合格ラインを上回っています。":pct>=60?"もう少し！苦手分野を重点的に復習しましょう。":"基礎から復習が必要です。note記事で一緒に学びましょう。";
+  const msg=pct>=80?"🎉 すばらしい！合格ラインを上回っています！":pct>=60?"📚 もう少し！苦手分野を重点的に復習しましょう。":"💪 基礎から復習が必要です。note記事で一緒に学びましょう！";
   const cls=z==="free"?"free":"paid";
   const noteUrl=NOTE_URLS[currentType]||"https://note.com";
   const roadmapUrl=NOTE_URLS["ロードマップ"]||"https://note.com";
+  const wCount=(weakList[currentType]||[]).length;
   const ctaHtml=z==="free"
     ?`<div class="result-cta free"><div class="result-cta-title free">📖 noteで詳しく学ぶ</div><a class="result-link" href="${noteUrl}" target="_blank" rel="noopener">・${currentType} 完全攻略記事</a><a class="result-link" href="${roadmapUrl}" target="_blank" rel="noopener">・取得ロードマップ（乙6→甲3）</a></div>`
-    :`<div class="result-cta paid"><div class="result-cta-title paid">有料版クリア！他の類も挑戦してみましょう。</div></div>`;
-  return `
-    <div class="result-wrap">
-      <div class="result-num ${cls}">${score}<span style="font-size:20px;color:#71717a"> / ${total}</span></div>
-      <div class="result-lbl">正解率 ${pct}%</div>
-      <div class="result-msg">${msg}</div>
-      ${ctaHtml}
-      <button class="nav-btn ${z==="free"?"primary-free":"primary-paid"}" style="margin-top:1rem;width:100%;max-width:300px" onclick="resetQuiz()">もう一度挑戦する</button>
+    :`<div class="result-cta paid"><div class="result-cta-title paid">✅ 有料版クリア！他の類も挑戦してみましょう。</div></div>`;
+  const weakBtn=wCount>0?`<button class="result-weak-btn" onclick="startWeakRetry()">⚠️ 苦手${wCount}問を再挑戦</button>`:"";
+  return `<div class="result-wrap">
+    <div class="result-circle ${cls}">
+      <div class="result-num ${cls}">${score}<span style="font-size:16px;opacity:.6">/${total}</span></div>
+      <div class="result-pct ${cls}">${pct}%</div>
     </div>
-  `;
+    <div class="result-lbl">正解率</div>
+    <div class="result-msg">${msg}</div>
+    ${ctaHtml}
+    <div class="result-btns">
+      <button class="nav-btn ${z==="free"?"primary-free":"primary-paid"}" onclick="resetQuiz()">🔄 もう一度</button>
+      ${weakBtn}
+    </div>
+  </div>`;
 }
 
 function resetQuiz(){
   currentIdx=0; answered=[]; score=0;
-  // ランダムモードが有効なら再シャッフル
-  if(randomMode){
-    const raw = getRawQs();
-    randomOrder = shuffleArray([...Array(raw.length).keys()]);
-  }
+  if(randomMode){const raw=getRawQs();randomOrder=shuffleArray([...Array(raw.length).keys()]);}
   render();
 }
 
